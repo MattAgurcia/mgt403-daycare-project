@@ -1,0 +1,11 @@
+county_fips,county_name,area_title,y,pred,resid,rank_main
+51013,"Arlington County, Virginia","Washington-Arlington-Alexandria, DC-VA-MD-WV",496.30000000000007,296.44996087673303,199.85003912326704,1
+27145,"Stearns County, Minnesota","St. Cloud, MN",336.67,167.18545965115877,169.48454034884125,2
+51510,"Alexandria city, Virginia","Washington-Arlington-Alexandria, DC-VA-MD-WV",424.29,281.9843717348466,142.30562826515342,5
+06075,"San Francisco County, California","San Francisco-Oakland-Hayward, CA",477.03999999999996,335.3218394683377,141.71816053166225,3
+55139,"Winnebago County, Wisconsin","Oshkosh-Neenah, WI",258.75,132.74701497813075,126.00298502186925,4
+11001,"District of Columbia, District of Columbia","Washington-Arlington-Alexandria, DC-VA-MD-WV",392.5,272.1430283022517,120.35697169774829,12
+27109,"Olmsted County, Minnesota","Rochester, MN",309.0,189.6164440325673,119.3835559674327,15
+55063,"La Crosse County, Wisconsin","La Crosse-Onalaska, WI-MN",258.75,139.91339281605835,118.83660718394165,8
+25021,"Norfolk County, Massachusetts","Boston-Cambridge-Nashua, MA-NH",420.0,304.53839241602907,115.46160758397093,9
+17113,"McLean County, Illinois","Bloomington, IL",279.0,167.9574741460914,111.04252585390859,26

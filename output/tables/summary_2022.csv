@@ -1,0 +1,12 @@
+variable,label,units,mean,sd,n,min,max
+price_preschool_real2022,"Median weekly price, center-based preschool","weekly $, 2022 $",175.08609950248757,60.02977535020156,1005,86.19,496.30000000000007
+childcare_wage_a_mean_real2022,Childcare-worker mean annual wage (OEWS 39-9011),"annual $, 2022 $",27815.601990049752,4357.872639834252,1005,19540.0,41700.0
+median_gross_rent_real2022,Median gross rent (rent + utilities),"monthly $, 2022 $",1107.589529343356,336.0960997492171,1005,430.0,2805.0
+per_capita_income_real2022,Per-capita income,"annual $, 2022 $",37934.38297957384,9492.458541656122,1005,16367.999999999998,89702.0
+pop_total,Total population,persons,257424.42587064675,550373.7153138766,1005,50.0,9936690.0
+kids_under6,Own children under 6,children,17234.441791044777,37184.09909916574,1005,0.0,616046.0
+kids_under6_allpar_lf,"Children under 6, all resident parents in labor force",children,11604.748258706468,24505.934766870596,1005,0.0,406465.0
+female_college_share,Share of women 25+ with bachelor's degree or higher,proportion (0-1),0.30683419983676724,0.1106075413694453,1005,0.0811783224645828,0.776125322228832
+female_ftyr_share,"Share of women 16-64 working full-time, year-round",proportion (0-1),0.44616351300022,0.05574791640357297,1005,0.2115844901866922,0.7142857142857143
+under6_share,Children under 6 / total population,proportion (0-1),0.06430475756250376,0.011437036120356953,1005,0.0,0.1092753623188405
+under6_careneed_share,Children under 6 w/ all parents in LF / total population,proportion (0-1),0.04321940159672677,0.008925521528820618,1005,0.0,0.0695074663806616

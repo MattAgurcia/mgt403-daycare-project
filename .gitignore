@@ -1,0 +1,18 @@
+# --- large raw downloads (re-download; see README "Raw data") ---
+NDCP2022.xlsx
+oesm*ma.zip
+oesm*ma/
+
+# --- reference PDFs (public links in README) ---
+*.pdf
+
+# --- superseded / stale ---
+build_analysis_dataset.py
+data/processed/step1_log.txt
+
+# --- OS / Python / Office junk ---
+.DS_Store
+__pycache__/
+*.pyc
+~$*
+.env

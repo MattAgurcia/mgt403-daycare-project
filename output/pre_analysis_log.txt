@@ -1,0 +1,102 @@
+==============================================================================
+Q1 - MERGE NDCP onto PS5 on [year, county_fips]
+==============================================================================
+NDCP rows 2015-2022: 25,763 (3,222 counties)
+PS5 rows  2015-2022: 9,873 (1,236 counties)
+matched 9,873 | PS5 not in NDCP 0 | NDCP not in PS5 15,890
+unmatched NDCP reasons: {'nonmetro OEWS area (outside metro sample)': 15890}
+NDCP vs ACS name mismatches (FIPS): ['72003', '72005', '72007', '72009', '72131']; PR price years: [2021]
+                              step  dropped  rows_left  2015  2016  2017  2018  2019  2020  2021  2022
+            merged PS5 metro panel        0       9873     0     0     0     0     0     0     0     0
+  drop Puerto Rico (state FIPS 72)      552       9321    69    69    69    69    69    69    69    69
+      drop missing preschool price     1179       8142   161   139   102   101   103   103   317   153
+drop missing childcare_wage_a_mean       50       8092     8     6     6     1     2    13     7     7
+    drop missing per_capita_income        0       8092     0     0     0     0     0     0     0     0
+            drop missing pop_total        0       8092     0     0     0     0     0     0     0     0
+          drop missing kids_under6        0       8092     0     0     0     0     0     0     0     0
+drop missing kids_under6_allpar_lf        0       8092     0     0     0     0     0     0     0     0
+    drop missing median_gross_rent        3       8089     1     0     0     0     0     0     1     1
+ drop missing female_college_share        0       8089     0     0     0     0     0     0     0     0
+    drop missing female_ftyr_share        0       8089     0     0     0     0     0     0     0     0
+         drop missing under6_share        0       8089     0     0     0     0     0     0     0     0
+drop missing under6_careneed_share        0       8089     0     0     0     0     0     0     0     0
+      counties  states  metro_areas
+year                               
+2015       994      43          335
+2016      1019      44          343
+2017      1057      46          351
+2018      1062      46          353
+2019      1061      46          353
+2020      1050      46          344
+2021       841      41          284
+2022      1005      45          334
+saved /sessions/blissful-vigilant-bardeen/mnt/MGT-403_Stats/project/data/processed/analysis_dataset.csv (8,089 rows)
+
+==============================================================================
+Q2 - SUMMARY TABLE 2022
+==============================================================================
+                      variable                                                    label             units          mean            sd    n          min          max
+      price_preschool_real2022              Median weekly price, center-based preschool  weekly $, 2022 $    175.086100     60.029775 1005    86.190000 4.963000e+02
+childcare_wage_a_mean_real2022         Childcare-worker mean annual wage (OEWS 39-9011)  annual $, 2022 $  27815.601990   4357.872640 1005 19540.000000 4.170000e+04
+    median_gross_rent_real2022                     Median gross rent (rent + utilities) monthly $, 2022 $   1107.589529    336.096100 1005   430.000000 2.805000e+03
+    per_capita_income_real2022                                        Per-capita income  annual $, 2022 $  37934.382980   9492.458542 1005 16368.000000 8.970200e+04
+                     pop_total                                         Total population           persons 257424.425871 550373.715314 1005    50.000000 9.936690e+06
+                   kids_under6                                     Own children under 6          children  17234.441791  37184.099099 1005     0.000000 6.160460e+05
+         kids_under6_allpar_lf    Children under 6, all resident parents in labor force          children  11604.748259  24505.934767 1005     0.000000 4.064650e+05
+          female_college_share      Share of women 25+ with bachelor's degree or higher  proportion (0-1)      0.306834      0.110608 1005     0.081178 7.761253e-01
+             female_ftyr_share       Share of women 16-64 working full-time, year-round  proportion (0-1)      0.446164      0.055748 1005     0.211584 7.142857e-01
+                  under6_share                      Children under 6 / total population  proportion (0-1)      0.064305      0.011437 1005     0.000000 1.092754e-01
+         under6_careneed_share Children under 6 w/ all parents in LF / total population  proportion (0-1)      0.043219      0.008926 1005     0.000000 6.950747e-02
+
+==============================================================================
+Q3/Q4 - SCATTERS AND REGRESSIONS 2022
+==============================================================================
+statsmodels not installed: skipped optional cross-check (numpy results used)
+OVB: {'corr': 0.6699, 'delta_rent_on_wage': np.float64(0.5166), 'delta_wage_on_rent': np.float64(0.8686), 'wage_a': np.float64(10.2108), 'wage_c': np.float64(7.148), 'bias_wage': np.float64(3.0629), 'rent_b': np.float64(12.137), 'rent_c': np.float64(5.9285), 'bias_rent': np.float64(6.2085), 'pred_sign_wage': np.float64(1.0), 'pred_sign_rent': np.float64(1.0), 'wage_change_matches': True, 'rent_change_matches': True}
+female_college_share: {'corr_wage': 0.4495, 'corr_rent': 0.6874, 'kids_d': np.float64(3.3598), 'kids_e': np.float64(1.6228), 'delta_wage_on_kids': np.float64(0.1771), 'delta_rent_on_kids': np.float64(0.2089), 'via_wage': np.float64(1.2804), 'via_rent': np.float64(0.4566), 'sd': np.float64(11.0608), 'mean': np.float64(30.6834), 'p10': np.float64(18.0014), 'p90': np.float64(45.6467), 'min': np.float64(8.1178), 'max': np.float64(77.6125), 'g_wage': np.float64(-0.0506), 'g_rent': np.float64(2.3061), 'bias_c_wage': np.float64(-0.082), 'bias_c_rent': np.float64(3.7423)}
+ rank_uni_r2                       variable                                         label          coef_unit  uni_coef  uni_se_hc1         uni_p   uni_r2   wr_coef  wr_se_hc1         wr_p    wr_r2  wr_delta_r2
+           1 childcare_wage_a_mean_real2022             Childcare-worker mean annual wage      per $1,000/yr 10.210844    0.402946 6.787454e-110 0.549464       NaN        NaN          NaN      NaN          NaN
+           2     per_capita_income_real2022                             Per-capita income      per $1,000/yr  4.514516    0.195396  4.916529e-95 0.509620  2.364514   0.239504 5.327192e-22 0.667358     0.057158
+           3     median_gross_rent_real2022                             Median gross rent        per $100/mo 12.137025    0.531054  2.128346e-93 0.461762       NaN        NaN          NaN      NaN          NaN
+           4           female_college_share           Share of women 25+ with bachelor's+     per pct. point  3.359841    0.186764  6.299872e-63 0.383242  1.622821   0.168345 4.326601e-21 0.657343     0.047143
+           5          kids_under6_allpar_lf       Children <6, all parents in labor force per 1,000 children  0.750882    0.198245  1.611269e-04 0.093962  0.009038   0.065113 8.896322e-01 0.610211     0.000011
+           6                      pop_total                              Total population per 100,000 people  3.333294    0.986582  7.565118e-04 0.093396 -0.042271   0.279617 8.798690e-01 0.610212     0.000012
+           7                    kids_under6                          Own children under 6 per 1,000 children  0.463857    0.123477  1.821342e-04 0.082556 -0.014797   0.038509 7.008831e-01 0.610270     0.000070
+           8              female_ftyr_share     Share of women 16-64 full-time year-round     per pct. point  2.053042    0.360089  1.561404e-08 0.036351  0.818518   0.229846 3.866043e-04 0.615700     0.005499
+           9          under6_careneed_share Children <6 w/ all parents in LF / population     per pct. point  6.722005    1.923722  4.961280e-04 0.009989  3.732225   1.261912 3.173338e-03 0.613249     0.003049
+          10                   under6_share                 Children under 6 / population     per pct. point -1.672290    1.493009  2.629476e-01 0.001015 -1.188684   0.968645 2.200500e-01 0.610702     0.000502
+| | (a) Wage only | (b) Rent only | (c) Wage + rent | (d) College share only | (e) Wage + rent + college share |
+|---|---:|---:|---:|---:|---:|
+| Intercept | **-108.935** | **40.658** | **-89.403** | **71.995** | **-100.029** |
+| &nbsp;&nbsp;robust SE (HC1) | (10.629) | (5.525) | (8.666) | (5.147) | (7.933) |
+| &nbsp;&nbsp;t-stat | t = -10.25 | t = 7.36 | t = -10.32 | t = 13.99 | t = -12.61 |
+| &nbsp;&nbsp;p-value | p < 0.001 | p < 0.001 | p < 0.001 | p < 0.001 | p < 0.001 |
+| Childcare wage ($1,000s/yr, 2022 $) | **10.211** |  | **7.148** |  | **7.230** |
+| &nbsp;&nbsp;robust SE (HC1) | (0.403) |  | (0.360) |  | (0.329) |
+| &nbsp;&nbsp;t-stat | t = 25.34 |  | t = 19.83 |  | t = 21.95 |
+| &nbsp;&nbsp;p-value | p < 0.001 |  | p < 0.001 |  | p < 0.001 |
+| Median gross rent ($100s/mo, 2022 $) |  | **12.137** | **5.929** |  | **2.186** |
+| &nbsp;&nbsp;robust SE (HC1) |  | (0.531) | (0.548) |  | (0.612) |
+| &nbsp;&nbsp;t-stat |  | t = 22.85 | t = 10.82 |  | t = 3.57 |
+| &nbsp;&nbsp;p-value |  | p < 0.001 | p < 0.001 |  | p < 0.001 |
+| Female college share (pct. points) |  |  |  | **3.360** | **1.623** |
+| &nbsp;&nbsp;robust SE (HC1) |  |  |  | (0.187) | (0.168) |
+| &nbsp;&nbsp;t-stat |  |  |  | t = 17.99 | t = 9.64 |
+| &nbsp;&nbsp;p-value |  |  |  | p < 0.001 | p < 0.001 |
+| N | 1,005 | 1,005 | 1,005 | 1,005 | 1,005 |
+| R² | 0.549 | 0.462 | 0.610 | 0.383 | 0.657 |
+| Adjusted R² | 0.549 | 0.461 | 0.609 | 0.383 | 0.656 |
+top_w county_fips                                county_name                                   area_title      y  wage_k  rent_h        res
+      51013                 Arlington County, Virginia Washington-Arlington-Alexandria, DC-VA-MD-WV 496.30   35.51   22.27 242.647603
+      06075           San Francisco County, California            San Francisco-Oakland-Hayward, CA 477.04   40.21   23.16 175.396636
+      51510                  Alexandria city, Virginia Washington-Arlington-Alexandria, DC-VA-MD-WV 424.29   35.51   19.83 170.637603
+      27145                  Stearns County, Minnesota                                St. Cloud, MN 336.67   27.81    9.75 161.641102
+      11001 District of Columbia, District of Columbia Washington-Arlington-Alexandria, DC-VA-MD-WV 392.50   35.51   18.17 138.847603
+top_r county_fips                      county_name                                   area_title      y  wage_k  rent_h        res
+      51013       Arlington County, Virginia Washington-Arlington-Alexandria, DC-VA-MD-WV 496.30   35.51   22.27 185.350770
+      27145        Stearns County, Minnesota                                St. Cloud, MN 336.67   27.81    9.75 177.676325
+      06075 San Francisco County, California            San Francisco-Oakland-Hayward, CA 477.04   40.21   23.16 155.288817
+      25021    Norfolk County, Massachusetts               Boston-Cambridge-Nashua, MA-NH 420.00   39.08   19.33 144.733624
+      51510        Alexandria city, Virginia Washington-Arlington-Alexandria, DC-VA-MD-WV 424.29   35.51   19.83 142.955111
+BP: {'wage': {'lm': np.float64(106.54287427508619), 'p': 5.606630262064009e-25}, 'rent': {'lm': np.float64(96.71332890043067), 'p': 8.012801522449665e-23}}
+extra: {'hc1_vs_classical': {'a': np.float64(1.3801957683922588), 'b': np.float64(1.2835072189142525)}, 'sd_wage_k': np.float64(4.357872639834253), 'sd_rent_h': np.float64(3.3609609974921706), 'sd_y': np.float64(60.02977535020156)}
